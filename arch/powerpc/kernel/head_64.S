@@ -973,7 +973,7 @@ start_here_multiplatform:
 #endif
 	/* Restore parameters passed from prom_init/kexec */
 	mr	r3,r31
-	LOAD_REG_ADDR(r12, DOTSYM(early_setup))
+	LOAD_REG_ADDR(r12, early_setup)
 	mtctr	r12
 	bctrl		/* also sets r13 and SPRG_PACA */
 
