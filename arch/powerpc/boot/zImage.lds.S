@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: GPL-2.0 */
 #include <asm-generic/vmlinux.lds.h>
 
-#ifdef CONFIG_PPC64_BOOT_WRAPPER
+#ifdef CONFIG_PPC64
 OUTPUT_ARCH(powerpc:common64)
 #else
 OUTPUT_ARCH(powerpc:common)
@@ -23,7 +23,7 @@ SECTIONS
     *(.rodata*)
     *(.data*)
     *(.sdata*)
-#ifndef CONFIG_PPC64_BOOT_WRAPPER
+#ifndef CONFIG_PPC64
     *(.got2)
 #endif
   }
@@ -35,7 +35,7 @@ SECTIONS
     *(.dynamic)
   }
 
-#ifdef CONFIG_PPC64_BOOT_WRAPPER
+#ifdef CONFIG_PPC64
   .got : ALIGN(256)
   {
     *(.got .toc)
@@ -46,7 +46,7 @@ SECTIONS
   .interp : { *(.interp) }
   .rela.dyn :
   {
-#ifdef CONFIG_PPC64_BOOT_WRAPPER
+#ifdef CONFIG_PPC64
     __rela_dyn_start = .;
 #endif
     *(.rela*)

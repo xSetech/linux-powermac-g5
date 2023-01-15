@@ -38,7 +38,7 @@ BOOTCFLAGS    := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		 -pipe -fomit-frame-pointer -fno-builtin -fPIC -nostdinc \
 		 $(LINUXINCLUDE)
 
-ifdef CONFIG_PPC64_BOOT_WRAPPER
+ifdef CONFIG_PPC64
 ifdef CONFIG_CPU_LITTLE_ENDIAN
 BOOTCFLAGS	+= -m64 -mcpu=powerpc64le
 else
@@ -131,7 +131,7 @@ src-wlib-y := string.S crt0.S stdio.c decompress.c main.c \
 
 src-wlib-$(CONFIG_PPC_MPC52xx) += mpc52xx-psc.c
 src-wlib-$(CONFIG_PPC_POWERNV) += opal-calls.S opal.c
-ifndef CONFIG_PPC64_BOOT_WRAPPER
+ifndef CONFIG_PPC64
 src-wlib-y += crtsavres.S
 endif
 src-wlib-$(CONFIG_40x) += 4xx.c planetcore.c

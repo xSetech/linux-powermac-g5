@@ -84,7 +84,7 @@
 #define MFTBU(dest)			mfspr dest, SPRN_TBRU
 #endif
 
-#ifdef CONFIG_PPC64_BOOT_WRAPPER
+#ifdef CONFIG_PPC64
 #define LOAD_REG_ADDR(reg,name)			\
 	addis	reg,r2,name@toc@ha;		\
 	addi	reg,reg,name@toc@l
