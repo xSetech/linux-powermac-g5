@@ -217,12 +217,12 @@ ld_version()
 
 ld_is_lld()
 {
-	${CROSS}ld -V 2>&1 | grep -q LLD
+	${CROSS}${LD} -V 2>&1 | grep -q LLD
 }
 
 # Do not include PT_INTERP segment when linking pie. Non-pie linking
 # just ignores this option.
-LD_VERSION=$(${CROSS}ld --version | ld_version)
+LD_VERSION=$(${CROSS}${LD} --version | ld_version)
 LD_NO_DL_MIN_VERSION=$(echo 2.26 | ld_version)
 if [ "$LD_VERSION" -ge "$LD_NO_DL_MIN_VERSION" ] ; then
 	nodl="--no-dynamic-linker"
@@ -376,7 +376,7 @@ epapr)
     link_address='0x20000000'
     pie=-pie
     notext='-z notext'
-    rodynamic=$(if ${CROSS}ld -V 2>&1 | grep -q LLD ; then echo "-z rodynamic"; fi)
+    rodynamic=$(if ${CROSS}${LD} -V 2>&1 | grep -q LLD ; then echo "-z rodynamic"; fi)
     ;;
 mvme5100)
     platformo="$object/fixed-head.o $object/mvme5100.o"
@@ -392,7 +392,7 @@ esac
 vmz="$tmpdir/`basename \"$kernel\"`.$ext"
 
 # Calculate the vmlinux.strip size
-${CROSS}objcopy $objflags "$kernel" "$vmz.$$"
+${CROSS}${OBJCOPY} $objflags "$kernel" "$vmz.$$"
 strip_size=$(${CONFIG_SHELL} "${srctree}/scripts/file-size.sh" "$vmz.$$")
 
 if [ -z "$cacheit" -o ! -f "$vmz$compression" -o "$vmz$compression" -ot "$kernel" ]; then
@@ -487,7 +487,7 @@ uboot-obs600)
 esac
 
 addsec() {
-    ${CROSS}objcopy $4 $1 \
+    ${CROSS}${OBJCOPY} $4 $1 \
 	--add-section=$3="$2" \
 	--set-section-flags=$3=contents,alloc,load,readonly,data
 }
@@ -517,7 +517,7 @@ if [ "$platform" != "miboot" ]; then
         text_start="-Ttext $link_address"
     fi
 #link everything
-    ${CROSS}ld -m $format -T $lds $text_start $pie $nodl $nowarn $rodynamic $notext -o "$ofile" $map \
+    ${CROSS}${LD} -m $format -T $lds $text_start $pie $nodl $nowarn $rodynamic $notext -o "$ofile" $map \
 	$platformo $tmp $object/wrapper.a
     rm $tmp
 fi
@@ -528,7 +528,7 @@ entry=`${CROSS}objdump -f "$ofile" | grep '^start address ' | cut -d' ' -f3`
 
 if [ -n "$binary" ]; then
     mv "$ofile" "$ofile".elf
-    ${CROSS}objcopy -O binary "$ofile".elf "$ofile"
+    ${CROSS}${OBJCOPY} -O binary "$ofile".elf "$ofile"
 fi
 
 # post-processing needed for some platforms
@@ -537,7 +537,7 @@ pseries|chrp|maple)
     $objbin/addnote "$ofile"
     ;;
 coff)
-    ${CROSS}objcopy -O aixcoff-rs6000 --set-start "$entry" "$ofile"
+    ${CROSS}${OBJCOPY} -O aixcoff-rs6000 --set-start "$entry" "$ofile"
     $objbin/hack-coff "$ofile"
     ;;
 cuboot*)
@@ -576,7 +576,7 @@ ps3)
     overlay_dest="256"
     overlay_size="512"
 
-    ${CROSS}objcopy -O binary "$ofile" "$ofile.bin"
+    ${CROSS}${OBJCOPY} -O binary "$ofile" "$ofile.bin"
 
     run_cmd dd if="$ofile.bin" of="$ofile.bin" conv=notrunc   \
         skip=$overlay_dest seek=$system_reset_kernel          \
