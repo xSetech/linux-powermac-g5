@@ -196,7 +196,7 @@ fi
 LC_ALL=C elfformat="`${CROSS}objdump -p "$kernel" | grep 'file format' | awk '{print $4}'`"
 case "$elfformat" in
     elf64-powerpcle)	format=elf64lppc	;;
-    elf64-powerpc)	format=elf32ppc	;;
+    elf64-powerpc)	format=elf64ppc	;;
     elf32-powerpc)	format=elf32ppc	;;
 esac
 
