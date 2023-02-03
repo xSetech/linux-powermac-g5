@@ -57,7 +57,7 @@
 #include "util/pfm.h"
 
 #include <assert.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <fcntl.h>
 
 #include <stdio.h>

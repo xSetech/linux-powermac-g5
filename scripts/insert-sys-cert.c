@@ -24,7 +24,7 @@
 #include <sys/mman.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 
 #define CERT_SYM  "system_extra_cert"
 #define USED_SYM  "system_extra_cert_used"

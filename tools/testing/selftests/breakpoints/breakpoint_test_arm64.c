@@ -22,7 +22,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <errno.h>
 #include <signal.h>
 

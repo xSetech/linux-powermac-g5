@@ -12,7 +12,7 @@
  */
 
 #define _GNU_SOURCE
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <fnmatch.h>
 #include <stdio.h>
 #include <ctype.h>

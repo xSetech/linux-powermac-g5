@@ -7,7 +7,7 @@
 
 #include <debug.h>
 #include <dwarf-regs.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <linux/kernel.h>
 
 #ifndef EM_AARCH64

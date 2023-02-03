@@ -20,7 +20,7 @@
 #include "evlist.h"
 #include "namespaces.h"
 #include "symbol.h"
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 
 #include "tsc.h"
 #include "session.h"

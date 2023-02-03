@@ -8,7 +8,7 @@
  *  Copyright (C) 2004 Fujitsu Siemens Computers GmbH
  *  Author: Bodo Stroesser (bodo.stroesser@fujitsu-siemens.com)
  */
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <stddef.h>
 #include <init.h>
 #include <elf_user.h>

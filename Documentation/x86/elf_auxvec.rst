@@ -14,7 +14,7 @@ configuration-specific parameters to userspace. In this example, a program
 allocates an alternate stack based on the kernel-provided size::
 
    #include <sys/auxv.h>
-   #include <elf.h>
+   #include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
    #include <signal.h>
    #include <stdlib.h>
    #include <assert.h>

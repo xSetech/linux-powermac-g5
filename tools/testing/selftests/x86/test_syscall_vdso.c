@@ -20,7 +20,7 @@
 #include <sys/types.h>
 #include <sys/select.h>
 #include <sys/time.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <sys/ptrace.h>
 #include <sys/wait.h>
 

@@ -32,7 +32,7 @@
 #include <sys/resource.h>
 #include <sys/sysinfo.h>
 #include <asm/ptrace.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <pthread.h>
 #include <sys/syscall.h>
 #include <linux/perf_event.h>

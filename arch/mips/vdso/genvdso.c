@@ -23,7 +23,7 @@
 #include <sys/types.h>
 
 #include <byteswap.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <errno.h>
 #include <fcntl.h>
 #include <inttypes.h>

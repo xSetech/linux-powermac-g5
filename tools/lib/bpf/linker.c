@@ -13,7 +13,7 @@
 #include <errno.h>
 #include <linux/err.h>
 #include <linux/btf.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <libelf.h>
 #include <fcntl.h>
 #include "libbpf.h"

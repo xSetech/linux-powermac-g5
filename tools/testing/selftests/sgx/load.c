@@ -2,7 +2,7 @@
 /*  Copyright(c) 2016-20 Intel Corporation. */
 
 #include <assert.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <errno.h>
 #include <fcntl.h>
 #include <stdbool.h>

@@ -9,7 +9,7 @@
  */
 
 #include <stdint.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <stdio.h>
 #include <time.h>
 #include <sys/auxv.h>

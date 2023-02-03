@@ -10,7 +10,7 @@
 #include <string.h>
 #include <errno.h>
 #include <unistd.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <byteswap.h>
 #define USE_BSD
 #include <endian.h>

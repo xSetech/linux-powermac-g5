@@ -3,7 +3,7 @@
  * Copyright 2017, Michael Ellerman, IBM Corp.
  */
 
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <errno.h>
 #include <fcntl.h>
 #include <link.h>

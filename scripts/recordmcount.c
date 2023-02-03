@@ -25,7 +25,7 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <getopt.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>

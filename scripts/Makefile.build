@@ -25,13 +25,13 @@ EXTRA_CFLAGS   := -I/Volumes/Workbench/Src/Gits/macos-elf/
 EXTRA_CPPFLAGS := -I/Volumes/Workbench/Src/Gits/macos-elf/
 EXTRA_LDFLAGS  :=
 asflags-y  :=
-ccflags-y  :=
+ccflags-y  := -I/Volumes/Workbench/Src/Gits/macos-elf/
 rustflags-y :=
-cppflags-y :=
+cppflags-y := -I/Volumes/Workbench/Src/Gits/macos-elf/
 ldflags-y  :=
 
 subdir-asflags-y :=
-subdir-ccflags-y :=
+subdir-ccflags-y := -I/Volumes/Workbench/Src/Gits/macos-elf/
 
 # Read auto.conf if it exists, otherwise ignore
 -include include/config/auto.conf

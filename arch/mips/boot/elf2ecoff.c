@@ -39,7 +39,7 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <limits.h>
 #include <netinet/in.h>
 #include <stdlib.h>

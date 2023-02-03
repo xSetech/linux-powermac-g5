@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <inttypes.h>
 #include <sys/ttydefaults.h>
 #include <stdlib.h>

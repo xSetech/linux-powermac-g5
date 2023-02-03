@@ -108,7 +108,7 @@ FSGSBASE instructions enablement
  The following code example shows how this detection works::
 
    #include <sys/auxv.h>
-   #include <elf.h>
+   #include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 
    /* Will be eventually in asm/hwcap.h */
    #ifndef HWCAP2_FSGSBASE

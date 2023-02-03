@@ -2,7 +2,7 @@
 #ifndef __TOOLS_KALLSYMS_H_
 #define __TOOLS_KALLSYMS_H_ 1
 
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <linux/ctype.h>
 #include <linux/types.h>
 

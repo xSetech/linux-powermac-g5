@@ -7,7 +7,7 @@
 #include <string.h>
 #include <errno.h>
 #include <endian.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 
 #include "relocs.h"
 

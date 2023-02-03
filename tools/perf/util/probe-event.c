@@ -17,7 +17,7 @@
 #include <string.h>
 #include <stdarg.h>
 #include <limits.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 
 #include "build-id.h"
 #include "event.h"

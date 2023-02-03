@@ -19,7 +19,7 @@
 #include <stdint.h>
 #include <string.h>
 #include <limits.h>
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 
 #include "parse_vdso.h"
 

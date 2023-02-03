@@ -36,7 +36,7 @@
 #include <linux/ctype.h>
 #include <linux/zalloc.h>
 
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <limits.h>
 #include <symbol/kallsyms.h>
 #include <sys/utsname.h>

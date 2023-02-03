@@ -16,7 +16,7 @@
  *
  */
 
-#include <elf.h>
+#include "/Volumes/Workbench/Src/Gits/macos-elf/elf.h"
 #include <errno.h>
 #include <gelf.h>
 #include <fcntl.h>
