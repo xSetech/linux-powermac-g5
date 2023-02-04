@@ -52,7 +52,7 @@ notext=
 rodynamic=
 
 # cross-compilation prefix
-CROSS=
+CROSS=powerpc-linux-
 
 # mkimage wrapper script
 MKIMAGE=$srctree/scripts/mkuboot.sh
