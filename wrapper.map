@@ -1,9 +1,11 @@
 Archive member included to satisfy reference by file (symbol)
 
+arch/powerpc/boot/wrapper.a(crt0.o)
+                              (_zimage_start)
 arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
                               arch/powerpc/boot/epapr.o (fdt_init)
 arch/powerpc/boot/wrapper.a(main.o)
-                              arch/powerpc/boot/crt0.o (start)
+                              arch/powerpc/boot/wrapper.a(crt0.o) (start)
 arch/powerpc/boot/wrapper.a(ofconsole.o)
                               arch/powerpc/boot/of.o (of_console_init)
 arch/powerpc/boot/wrapper.a(oflib.o)
@@ -41,43 +43,24 @@ arch/powerpc/boot/wrapper.a(fdt.o)
 
 Discarded input sections
 
- .comment       0x00000000       0x1f arch/powerpc/boot/of.o
  .llvm_addrsig  0x00000000        0x8 arch/powerpc/boot/of.o
- .comment       0x00000000       0x1f arch/powerpc/boot/epapr.o
  .llvm_addrsig  0x00000000        0x3 arch/powerpc/boot/epapr.o
- .comment       0x00000000       0x1f ./zImage.5636.o
- .llvm_addrsig  0x00000000        0x0 ./zImage.5636.o
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
+ .llvm_addrsig  0x00000000        0x0 ./zImage.17153.o
  .llvm_addrsig  0x00000000        0xa arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(main.o)
  .llvm_addrsig  0x00000000        0x7 arch/powerpc/boot/wrapper.a(main.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(ofconsole.o)
  .llvm_addrsig  0x00000000        0x3 arch/powerpc/boot/wrapper.a(ofconsole.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(oflib.o)
  .llvm_addrsig  0x00000000        0x3 arch/powerpc/boot/wrapper.a(oflib.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(serial.o)
  .llvm_addrsig  0x00000000        0x5 arch/powerpc/boot/wrapper.a(serial.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(simple_alloc.o)
  .llvm_addrsig  0x00000000        0x3 arch/powerpc/boot/wrapper.a(simple_alloc.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(stdio.o)
  .llvm_addrsig  0x00000000        0x1 arch/powerpc/boot/wrapper.a(stdio.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(decompress.o)
  .llvm_addrsig  0x00000000        0x2 arch/powerpc/boot/wrapper.a(decompress.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(devtree.o)
  .llvm_addrsig  0x00000000        0x1 arch/powerpc/boot/wrapper.a(devtree.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(elf_util.o)
  .llvm_addrsig  0x00000000        0x0 arch/powerpc/boot/wrapper.a(elf_util.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(fdt_ro.o)
  .llvm_addrsig  0x00000000        0x0 arch/powerpc/boot/wrapper.a(fdt_ro.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(fdt_rw.o)
  .llvm_addrsig  0x00000000        0x0 arch/powerpc/boot/wrapper.a(fdt_rw.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(fdt_strerror.o)
  .llvm_addrsig  0x00000000        0x0 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(fdt_wip.o)
  .llvm_addrsig  0x00000000        0x0 arch/powerpc/boot/wrapper.a(fdt_wip.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(ns16550.o)
  .llvm_addrsig  0x00000000        0x6 arch/powerpc/boot/wrapper.a(ns16550.o)
- .comment       0x00000000       0x1f arch/powerpc/boot/wrapper.a(fdt.o)
  .llvm_addrsig  0x00000000        0x0 arch/powerpc/boot/wrapper.a(fdt.o)
 
 Memory Configuration
@@ -88,325 +71,375 @@ Name             Origin             Length             Attributes
 Linker script and memory map
 
 
-.text           0x00500000     0xc3f4
-                0x00500000                        _start = .
+.text           0x00400000     0xc3f4
+                0x00400000                        _start = .
  *(.text)
- .text          0x00500000      0x12c arch/powerpc/boot/crt0.o
-                0x00500018                _zimage_start
-                0x00500018                _zimage_start_lib
- .text          0x0050012c      0x230 arch/powerpc/boot/of.o
-                0x00500130                platform_init
- .text          0x0050035c      0x17c arch/powerpc/boot/epapr.o
-                0x00500360                epapr_platform_init
- .text          0x005004d8        0x0 ./zImage.5636.o
- .text          0x005004d8      0x820 arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
-                0x005004dc                fdt_init
- .text          0x00500cf8      0x6fc arch/powerpc/boot/wrapper.a(main.o)
-                0x00500cfc                start
- .text          0x005013f4      0x110 arch/powerpc/boot/wrapper.a(ofconsole.o)
-                0x005013f8                of_console_init
- .text          0x00501504      0xa04 arch/powerpc/boot/wrapper.a(oflib.o)
-                0x00501508                of_init
-                0x00501548                of_call_prom
-                0x005016f0                of_claim
-                0x00501cd8                of_vmlinux_alloc
-                0x00501db8                of_exit
-                0x00501e04                of_finddevice
-                0x00501e54                of_getprop
-                0x00501eb0                of_setprop
- .text          0x00501f08      0x46c arch/powerpc/boot/wrapper.a(serial.o)
-                0x00501f0c                serial_console_init
- .text          0x00502374      0x520 arch/powerpc/boot/wrapper.a(simple_alloc.o)
-                0x00502378                simple_alloc_init
- .text          0x00502894      0xef4 arch/powerpc/boot/wrapper.a(stdio.o)
-                0x00502894                strnlen
-                0x005028c8                strrchr
-                0x005028fc                vsprintf
-                0x00503678                sprintf
-                0x005036d8                printf
- .text          0x00503788      0x338 arch/powerpc/boot/wrapper.a(string.o)
-                0x00503788                strcpy
-                0x005037a4                strncpy
-                0x005037cc                strcat
-                0x005037f8                strchr
-                0x00503818                strcmp
-                0x0050383c                strncmp
-                0x00503864                strlen
-                0x0050387c                memset
-                0x005038d8                memmove
-                0x005038e0                memcpy
-                0x00503998                backwards_memcpy
-                0x00503a3c                memchr
-                0x00503a64                memcmp
-                0x00503a94                flush_cache
- .text          0x00503ac0       0x64 arch/powerpc/boot/wrapper.a(util.o)
-                0x00503ac0                udelay
- .text          0x00503b24     0x2e0c arch/powerpc/boot/wrapper.a(decompress.o)
-                0x00503b28                zlib_inflate_table
-                0x00504360                inflate_fast
-                0x005049c0                zlib_inflate_workspacesize
-                0x005049cc                zlib_inflateReset
-                0x00504a4c                zlib_inflateInit2
-                0x00504b28                zlib_inflate
-                0x005062b0                zlib_inflateEnd
-                0x005062dc                zlib_inflateIncomp
-                0x005063c8                partial_decompress
- .text          0x00506930     0x1464 arch/powerpc/boot/wrapper.a(devtree.o)
-                0x00506934                dt_fixup_memory
-                0x00506c28                dt_fixup_cpu_clocks
-                0x00506e30                dt_fixup_clock
-                0x00506f04                dt_fixup_mac_address_by_alias
-                0x00507024                dt_fixup_mac_address
-                0x005070f8                __dt_fixup_mac_addresses
-                0x00507270                dt_get_reg_format
-                0x0050733c                dt_xlate_reg
-                0x00507b00                dt_xlate_addr
-                0x00507b88                dt_is_compatible
-                0x00507c64                dt_get_virtual_reg
- .text          0x00507d94      0x114 arch/powerpc/boot/wrapper.a(div64.o)
-                0x00507d94                __div64_32
-                0x00507e34                __ashrdi3
-                0x00507e60                __ashldi3
-                0x00507e84                __lshrdi3
- .text          0x00507ea8      0x178 arch/powerpc/boot/wrapper.a(elf_util.o)
-                0x00507ea8                parse_elf64
-                0x00507f64                parse_elf32
- .text          0x00508020     0x20c8 arch/powerpc/boot/wrapper.a(fdt_ro.o)
-                0x00508020                fdt_get_string
-                0x00508150                fdt_string
-                0x00508174                fdt_find_max_phandle
-                0x00508230                fdt_get_phandle
-                0x00508374                fdt_generate_phandle
-                0x00508440                fdt_get_mem_rsv
-                0x00508500                fdt_num_mem_rsv
-                0x00508558                fdt_subnode_offset_namelen
-                0x0050869c                fdt_subnode_offset
-                0x005086fc                fdt_path_offset_namelen
-                0x005088cc                fdt_get_alias_namelen
-                0x005089b8                fdt_path_offset
-                0x00508a04                fdt_get_name
-                0x00508acc                fdt_first_property_offset
-                0x00508b6c                fdt_next_property_offset
-                0x00508c0c                fdt_get_property_by_offset
-                0x00508ca0                fdt_get_property_namelen
-                0x00508ed8                fdt_get_property
-                0x00508f6c                fdt_getprop_namelen
-                0x00508fe0                fdt_getprop_by_offset
-                0x005090ec                fdt_getprop
-                0x005091a4                fdt_get_alias
-                0x00509298                fdt_get_path
-                0x0050947c                fdt_supernode_atdepth_offset
-                0x005095a8                fdt_node_depth
-                0x005096c4                fdt_parent_offset
-                0x00509890                fdt_node_offset_by_prop_value
-                0x005099d4                fdt_node_offset_by_phandle
-                0x00509a88                fdt_stringlist_contains
-                0x00509b54                fdt_stringlist_count
-                0x00509c4c                fdt_stringlist_search
-                0x00509d9c                fdt_stringlist_get
-                0x00509ee0                fdt_node_check_compatible
-                0x0050a030                fdt_node_offset_by_compatible
- .text          0x0050a0e8     0x1184 arch/powerpc/boot/wrapper.a(fdt_rw.o)
-                0x0050a0e8                fdt_add_mem_rsv
-                0x0050a224                fdt_del_mem_rsv
-                0x0050a354                fdt_set_name
-                0x0050a488                fdt_setprop_placeholder
-                0x0050a808                fdt_setprop
-                0x0050a878                fdt_appendprop
-                0x0050a9f4                fdt_delprop
-                0x0050aae8                fdt_add_subnode_namelen
-                0x0050acc0                fdt_add_subnode
-                0x0050ad1c                fdt_del_node
-                0x0050adfc                fdt_open_into
-                0x0050b0a0                fdt_pack
- .text          0x0050b26c       0x78 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
-                0x0050b270                fdt_strerror
- .text          0x0050b2e4      0x3f4 arch/powerpc/boot/wrapper.a(fdt_wip.o)
-                0x0050b2e4                fdt_setprop_inplace_namelen_partial
-                0x0050b360                fdt_setprop_inplace
-                0x0050b428                fdt_nop_property
-                0x0050b514                fdt_node_end_offset_
-                0x0050b580                fdt_nop_node
- .text          0x0050b6d8      0x2e4 arch/powerpc/boot/wrapper.a(ns16550.o)
-                0x0050b6dc                ns16550_console_init
- .text          0x0050b9bc      0xa38 arch/powerpc/boot/wrapper.a(fdt.o)
-                0x0050b9bc                fdt_ro_probe_
-                0x0050ba4c                fdt_header_size_
-                0x0050ba8c                fdt_header_size
-                0x0050bacc                fdt_check_header
-                0x0050bc70                fdt_offset_ptr
-                0x0050bd20                fdt_next_tag
-                0x0050bec4                fdt_check_node_offset_
-                0x0050bf18                fdt_check_prop_offset_
-                0x0050bf6c                fdt_next_node
-                0x0050c0ac                fdt_first_subnode
-                0x0050c1bc                fdt_next_subnode
-                0x0050c2c8                fdt_find_string_
-                0x0050c36c                fdt_move
+ .text          0x00400000      0x230 arch/powerpc/boot/of.o
+                0x00400004                platform_init
+ .text          0x00400230      0x17c arch/powerpc/boot/epapr.o
+                0x00400234                epapr_platform_init
+ .text          0x004003ac        0x0 ./zImage.17153.o
+ .text          0x004003ac      0x12c arch/powerpc/boot/wrapper.a(crt0.o)
+                0x004003c4                _zimage_start
+                0x004003c4                _zimage_start_lib
+ .text          0x004004d8      0x820 arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
+                0x004004dc                fdt_init
+ .text          0x00400cf8      0x6fc arch/powerpc/boot/wrapper.a(main.o)
+                0x00400cfc                start
+ .text          0x004013f4      0x110 arch/powerpc/boot/wrapper.a(ofconsole.o)
+                0x004013f8                of_console_init
+ .text          0x00401504      0xa04 arch/powerpc/boot/wrapper.a(oflib.o)
+                0x00401508                of_init
+                0x00401548                of_call_prom
+                0x004016f0                of_claim
+                0x00401cd8                of_vmlinux_alloc
+                0x00401db8                of_exit
+                0x00401e04                of_finddevice
+                0x00401e54                of_getprop
+                0x00401eb0                of_setprop
+ .text          0x00401f08      0x46c arch/powerpc/boot/wrapper.a(serial.o)
+                0x00401f0c                serial_console_init
+ .text          0x00402374      0x520 arch/powerpc/boot/wrapper.a(simple_alloc.o)
+                0x00402378                simple_alloc_init
+ .text          0x00402894      0xef4 arch/powerpc/boot/wrapper.a(stdio.o)
+                0x00402894                strnlen
+                0x004028c8                strrchr
+                0x004028fc                vsprintf
+                0x00403678                sprintf
+                0x004036d8                printf
+ .text          0x00403788      0x338 arch/powerpc/boot/wrapper.a(string.o)
+                0x00403788                strcpy
+                0x004037a4                strncpy
+                0x004037cc                strcat
+                0x004037f8                strchr
+                0x00403818                strcmp
+                0x0040383c                strncmp
+                0x00403864                strlen
+                0x0040387c                memset
+                0x004038d8                memmove
+                0x004038e0                memcpy
+                0x00403998                backwards_memcpy
+                0x00403a3c                memchr
+                0x00403a64                memcmp
+                0x00403a94                flush_cache
+ .text          0x00403ac0       0x64 arch/powerpc/boot/wrapper.a(util.o)
+                0x00403ac0                udelay
+ .text          0x00403b24     0x2e0c arch/powerpc/boot/wrapper.a(decompress.o)
+                0x00403b28                zlib_inflate_table
+                0x00404360                inflate_fast
+                0x004049c0                zlib_inflate_workspacesize
+                0x004049cc                zlib_inflateReset
+                0x00404a4c                zlib_inflateInit2
+                0x00404b28                zlib_inflate
+                0x004062b0                zlib_inflateEnd
+                0x004062dc                zlib_inflateIncomp
+                0x004063c8                partial_decompress
+ .text          0x00406930     0x1464 arch/powerpc/boot/wrapper.a(devtree.o)
+                0x00406934                dt_fixup_memory
+                0x00406c28                dt_fixup_cpu_clocks
+                0x00406e30                dt_fixup_clock
+                0x00406f04                dt_fixup_mac_address_by_alias
+                0x00407024                dt_fixup_mac_address
+                0x004070f8                __dt_fixup_mac_addresses
+                0x00407270                dt_get_reg_format
+                0x0040733c                dt_xlate_reg
+                0x00407b00                dt_xlate_addr
+                0x00407b88                dt_is_compatible
+                0x00407c64                dt_get_virtual_reg
+ .text          0x00407d94      0x114 arch/powerpc/boot/wrapper.a(div64.o)
+                0x00407d94                __div64_32
+                0x00407e34                __ashrdi3
+                0x00407e60                __ashldi3
+                0x00407e84                __lshrdi3
+ .text          0x00407ea8      0x178 arch/powerpc/boot/wrapper.a(elf_util.o)
+                0x00407ea8                parse_elf64
+                0x00407f64                parse_elf32
+ .text          0x00408020     0x20c8 arch/powerpc/boot/wrapper.a(fdt_ro.o)
+                0x00408020                fdt_get_string
+                0x00408150                fdt_string
+                0x00408174                fdt_find_max_phandle
+                0x00408230                fdt_get_phandle
+                0x00408374                fdt_generate_phandle
+                0x00408440                fdt_get_mem_rsv
+                0x00408500                fdt_num_mem_rsv
+                0x00408558                fdt_subnode_offset_namelen
+                0x0040869c                fdt_subnode_offset
+                0x004086fc                fdt_path_offset_namelen
+                0x004088cc                fdt_get_alias_namelen
+                0x004089b8                fdt_path_offset
+                0x00408a04                fdt_get_name
+                0x00408acc                fdt_first_property_offset
+                0x00408b6c                fdt_next_property_offset
+                0x00408c0c                fdt_get_property_by_offset
+                0x00408ca0                fdt_get_property_namelen
+                0x00408ed8                fdt_get_property
+                0x00408f6c                fdt_getprop_namelen
+                0x00408fe0                fdt_getprop_by_offset
+                0x004090ec                fdt_getprop
+                0x004091a4                fdt_get_alias
+                0x00409298                fdt_get_path
+                0x0040947c                fdt_supernode_atdepth_offset
+                0x004095a8                fdt_node_depth
+                0x004096c4                fdt_parent_offset
+                0x00409890                fdt_node_offset_by_prop_value
+                0x004099d4                fdt_node_offset_by_phandle
+                0x00409a88                fdt_stringlist_contains
+                0x00409b54                fdt_stringlist_count
+                0x00409c4c                fdt_stringlist_search
+                0x00409d9c                fdt_stringlist_get
+                0x00409ee0                fdt_node_check_compatible
+                0x0040a030                fdt_node_offset_by_compatible
+ .text          0x0040a0e8     0x1184 arch/powerpc/boot/wrapper.a(fdt_rw.o)
+                0x0040a0e8                fdt_add_mem_rsv
+                0x0040a224                fdt_del_mem_rsv
+                0x0040a354                fdt_set_name
+                0x0040a488                fdt_setprop_placeholder
+                0x0040a808                fdt_setprop
+                0x0040a878                fdt_appendprop
+                0x0040a9f4                fdt_delprop
+                0x0040aae8                fdt_add_subnode_namelen
+                0x0040acc0                fdt_add_subnode
+                0x0040ad1c                fdt_del_node
+                0x0040adfc                fdt_open_into
+                0x0040b0a0                fdt_pack
+ .text          0x0040b26c       0x78 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
+                0x0040b270                fdt_strerror
+ .text          0x0040b2e4      0x3f4 arch/powerpc/boot/wrapper.a(fdt_wip.o)
+                0x0040b2e4                fdt_setprop_inplace_namelen_partial
+                0x0040b360                fdt_setprop_inplace
+                0x0040b428                fdt_nop_property
+                0x0040b514                fdt_node_end_offset_
+                0x0040b580                fdt_nop_node
+ .text          0x0040b6d8      0x2e4 arch/powerpc/boot/wrapper.a(ns16550.o)
+                0x0040b6dc                ns16550_console_init
+ .text          0x0040b9bc      0xa38 arch/powerpc/boot/wrapper.a(fdt.o)
+                0x0040b9bc                fdt_ro_probe_
+                0x0040ba4c                fdt_header_size_
+                0x0040ba8c                fdt_header_size
+                0x0040bacc                fdt_check_header
+                0x0040bc70                fdt_offset_ptr
+                0x0040bd20                fdt_next_tag
+                0x0040bec4                fdt_check_node_offset_
+                0x0040bf18                fdt_check_prop_offset_
+                0x0040bf6c                fdt_next_node
+                0x0040c0ac                fdt_first_subnode
+                0x0040c1bc                fdt_next_subnode
+                0x0040c2c8                fdt_find_string_
+                0x0040c36c                fdt_move
  *(.fixup)
-                0x0050c3f4                        _etext = .
+                0x0040c3f4                        _etext = .
 
-.glink          0x0050c3f4        0x0
- .glink         0x0050c3f4        0x0 arch/powerpc/boot/crt0.o
+.glink          0x0040c3f4        0x0
+ .glink         0x0040c3f4        0x0 arch/powerpc/boot/of.o
+                0x0040d000                        . = ALIGN (0x1000)
 
-.eh_frame       0x0050c3f4        0x0
- .eh_frame      0x0050c3f4        0x0 arch/powerpc/boot/crt0.o
-
-.eh_frame       0x0050c3f4     0x1378
- .eh_frame      0x0050c3f4       0x6c arch/powerpc/boot/of.o
- .eh_frame      0x0050c460       0x4c arch/powerpc/boot/epapr.o
- .eh_frame      0x0050c4ac      0x178 arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
- .eh_frame      0x0050c624       0x3c arch/powerpc/boot/wrapper.a(main.o)
- .eh_frame      0x0050c660       0x68 arch/powerpc/boot/wrapper.a(ofconsole.o)
- .eh_frame      0x0050c6c8      0x124 arch/powerpc/boot/wrapper.a(oflib.o)
- .eh_frame      0x0050c7ec       0xb0 arch/powerpc/boot/wrapper.a(serial.o)
- .eh_frame      0x0050c89c       0x90 arch/powerpc/boot/wrapper.a(simple_alloc.o)
- .eh_frame      0x0050c92c       0xcc arch/powerpc/boot/wrapper.a(stdio.o)
- .eh_frame      0x0050c9f8      0x19c arch/powerpc/boot/wrapper.a(decompress.o)
- .eh_frame      0x0050cb94      0x1d0 arch/powerpc/boot/wrapper.a(devtree.o)
- .eh_frame      0x0050cd64       0x3c arch/powerpc/boot/wrapper.a(elf_util.o)
- .eh_frame      0x0050cda0      0x4b0 arch/powerpc/boot/wrapper.a(fdt_ro.o)
- .eh_frame      0x0050d250      0x224 arch/powerpc/boot/wrapper.a(fdt_rw.o)
- .eh_frame      0x0050d474       0x30 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
- .eh_frame      0x0050d4a4       0xac arch/powerpc/boot/wrapper.a(fdt_wip.o)
- .eh_frame      0x0050d550       0xa4 arch/powerpc/boot/wrapper.a(ns16550.o)
- .eh_frame      0x0050d5f4      0x178 arch/powerpc/boot/wrapper.a(fdt.o)
-
-.rela.dyn       0x0050d76c        0x0
- .rela.iplt     0x0050d76c        0x0 arch/powerpc/boot/crt0.o
- .rela.got      0x0050d76c        0x0 arch/powerpc/boot/crt0.o
-                0x0050e000                        . = ALIGN (0x1000)
-
-.data           0x0050e000   0x7b3cd4
+.data           0x0040d000     0x1f38
  *(.rodata*)
  .rodata.str1.1
-                0x0050e000      0x115 arch/powerpc/boot/epapr.o
+                0x0040d000      0x115 arch/powerpc/boot/epapr.o
  .rodata.str1.1
-                0x0050e115      0x103 arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
+                0x0040d115      0x103 arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
  .rodata.str1.1
-                0x0050e218      0x3f9 arch/powerpc/boot/wrapper.a(main.o)
+                0x0040d218      0x3f9 arch/powerpc/boot/wrapper.a(main.o)
                                 0x403 (size before relaxing)
  .rodata.str1.1
-                0x0050e611        0xd arch/powerpc/boot/wrapper.a(ofconsole.o)
+                0x0040d611        0xd arch/powerpc/boot/wrapper.a(ofconsole.o)
                                  0x15 (size before relaxing)
  .rodata.str1.1
-                0x0050e61e      0x104 arch/powerpc/boot/wrapper.a(oflib.o)
+                0x0040d61e      0x104 arch/powerpc/boot/wrapper.a(oflib.o)
                                 0x11c (size before relaxing)
- *fill*         0x0050e722        0x2 
- .rodata        0x0050e724       0x44 arch/powerpc/boot/wrapper.a(serial.o)
+ *fill*         0x0040d722        0x2 
+ .rodata        0x0040d724       0x44 arch/powerpc/boot/wrapper.a(serial.o)
  .rodata.str1.1
-                0x0050e768       0x3c arch/powerpc/boot/wrapper.a(serial.o)
+                0x0040d768       0x3c arch/powerpc/boot/wrapper.a(serial.o)
                                  0x50 (size before relaxing)
- .rodata        0x0050e7a4      0x278 arch/powerpc/boot/wrapper.a(stdio.o)
+ .rodata        0x0040d7a4      0x278 arch/powerpc/boot/wrapper.a(stdio.o)
  .rodata.str1.1
-                0x0050ea1c       0x51 arch/powerpc/boot/wrapper.a(stdio.o)
- *fill*         0x0050ea6d        0x3 
- .rodata        0x0050ea70      0xa26 arch/powerpc/boot/wrapper.a(decompress.o)
+                0x0040da1c       0x51 arch/powerpc/boot/wrapper.a(stdio.o)
+ *fill*         0x0040da6d        0x3 
+ .rodata        0x0040da70      0xa26 arch/powerpc/boot/wrapper.a(decompress.o)
  .rodata.str1.1
-                0x0050f496      0x266 arch/powerpc/boot/wrapper.a(decompress.o)
+                0x0040e496      0x266 arch/powerpc/boot/wrapper.a(decompress.o)
  .rodata.str1.1
-                0x0050f6fc      0x223 arch/powerpc/boot/wrapper.a(devtree.o)
+                0x0040e6fc      0x223 arch/powerpc/boot/wrapper.a(devtree.o)
                                 0x242 (size before relaxing)
  .rodata.str1.1
-                0x0050f91f        0xe arch/powerpc/boot/wrapper.a(fdt_ro.o)
+                0x0040e91f        0xe arch/powerpc/boot/wrapper.a(fdt_ro.o)
                                  0x2a (size before relaxing)
  .rodata.str1.1
-                0x0050f92d      0x181 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
+                0x0040e92d      0x181 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
  .rodata.str1.1
-                0x0050faae       0x2e arch/powerpc/boot/wrapper.a(ns16550.o)
- .rodata        0x0050fadc       0x24 arch/powerpc/boot/wrapper.a(fdt.o)
+                0x0040eaae       0x2e arch/powerpc/boot/wrapper.a(ns16550.o)
+ .rodata        0x0040eadc       0x24 arch/powerpc/boot/wrapper.a(fdt.o)
  *(.data*)
- .data          0x0050fb00       0x10 arch/powerpc/boot/crt0.o
-                0x0050fb00                _zimage_start_opd
- .data          0x0050fb10        0x4 arch/powerpc/boot/epapr.o
-                0x0050fb10                _platform_stack_top
- .data          0x0050fb14        0x4 arch/powerpc/boot/wrapper.a(oflib.o)
- .data          0x0050fb18        0x4 arch/powerpc/boot/wrapper.a(util.o)
-                0x0050fb18                timebase_period_ns
- .data.rel.ro   0x0050fb1c       0x50 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
- *(__builtin_*)
- __builtin_cmdline
-                0x0050fb6c      0x800 arch/powerpc/boot/wrapper.a(main.o)
+ .data          0x0040eb00        0x4 arch/powerpc/boot/epapr.o
+                0x0040eb00                _platform_stack_top
+ .data          0x0040eb04       0x10 arch/powerpc/boot/wrapper.a(crt0.o)
+                0x0040eb04                _zimage_start_opd
+ .data          0x0040eb14        0x4 arch/powerpc/boot/wrapper.a(oflib.o)
+ .data          0x0040eb18        0x4 arch/powerpc/boot/wrapper.a(util.o)
+                0x0040eb18                timebase_period_ns
+ .data.rel.ro   0x0040eb1c       0x50 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
  *(.sdata*)
- .sdata         0x0051036c        0x0 arch/powerpc/boot/crt0.o
-                0x0051836c                _SDA_BASE_
- .sdata2        0x0051036c        0x0 arch/powerpc/boot/crt0.o
-                0x0051836c                _SDA2_BASE_
+ .sdata         0x0040eb6c        0x0 arch/powerpc/boot/of.o
+                0x00416b6c                _SDA_BASE_
+ .sdata2        0x0040eb6c        0x0 arch/powerpc/boot/of.o
+                0x00416b6c                _SDA2_BASE_
  *(.got2)
- .got2          0x0051036c       0x30 arch/powerpc/boot/of.o
- .got2          0x0051039c       0x28 arch/powerpc/boot/epapr.o
- .got2          0x005103c4        0x0 ./zImage.5636.o
- .got2          0x005103c4       0x5c arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
- .got2          0x00510420       0xa0 arch/powerpc/boot/wrapper.a(main.o)
- .got2          0x005104c0       0x1c arch/powerpc/boot/wrapper.a(ofconsole.o)
- .got2          0x005104dc       0x74 arch/powerpc/boot/wrapper.a(oflib.o)
- .got2          0x00510550       0x40 arch/powerpc/boot/wrapper.a(serial.o)
- .got2          0x00510590       0x24 arch/powerpc/boot/wrapper.a(simple_alloc.o)
- .got2          0x005105b4       0x24 arch/powerpc/boot/wrapper.a(stdio.o)
- .got2          0x005105d8       0x94 arch/powerpc/boot/wrapper.a(decompress.o)
- .got2          0x0051066c       0x80 arch/powerpc/boot/wrapper.a(devtree.o)
- .got2          0x005106ec        0x0 arch/powerpc/boot/wrapper.a(elf_util.o)
- .got2          0x005106ec       0x10 arch/powerpc/boot/wrapper.a(fdt_ro.o)
- .got2          0x005106fc        0x0 arch/powerpc/boot/wrapper.a(fdt_rw.o)
- .got2          0x005106fc       0x10 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
- .got2          0x0051070c        0x0 arch/powerpc/boot/wrapper.a(fdt_wip.o)
- .got2          0x0051070c       0x28 arch/powerpc/boot/wrapper.a(ns16550.o)
- .got2          0x00510734        0x4 arch/powerpc/boot/wrapper.a(fdt.o)
-                0x00510738                        _dtb_start = .
+ .got2          0x0040eb6c       0x30 arch/powerpc/boot/of.o
+ .got2          0x0040eb9c       0x28 arch/powerpc/boot/epapr.o
+ .got2          0x0040ebc4        0x0 ./zImage.17153.o
+ .got2          0x0040ebc4       0x5c arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
+ .got2          0x0040ec20       0xa0 arch/powerpc/boot/wrapper.a(main.o)
+ .got2          0x0040ecc0       0x1c arch/powerpc/boot/wrapper.a(ofconsole.o)
+ .got2          0x0040ecdc       0x74 arch/powerpc/boot/wrapper.a(oflib.o)
+ .got2          0x0040ed50       0x40 arch/powerpc/boot/wrapper.a(serial.o)
+ .got2          0x0040ed90       0x24 arch/powerpc/boot/wrapper.a(simple_alloc.o)
+ .got2          0x0040edb4       0x24 arch/powerpc/boot/wrapper.a(stdio.o)
+ .got2          0x0040edd8       0x94 arch/powerpc/boot/wrapper.a(decompress.o)
+ .got2          0x0040ee6c       0x80 arch/powerpc/boot/wrapper.a(devtree.o)
+ .got2          0x0040eeec        0x0 arch/powerpc/boot/wrapper.a(elf_util.o)
+ .got2          0x0040eeec       0x10 arch/powerpc/boot/wrapper.a(fdt_ro.o)
+ .got2          0x0040eefc        0x0 arch/powerpc/boot/wrapper.a(fdt_rw.o)
+ .got2          0x0040eefc       0x10 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
+ .got2          0x0040ef0c        0x0 arch/powerpc/boot/wrapper.a(fdt_wip.o)
+ .got2          0x0040ef0c       0x28 arch/powerpc/boot/wrapper.a(ns16550.o)
+ .got2          0x0040ef34        0x4 arch/powerpc/boot/wrapper.a(fdt.o)
+
+.branch_lt      0x0040ef38        0x0
+ .branch_lt     0x0040ef38        0x0 arch/powerpc/boot/of.o
+
+.got            0x0040ef38       0x10
+ .got           0x0040ef38       0x10 arch/powerpc/boot/of.o
+                0x0040ef3c                _GLOBAL_OFFSET_TABLE_
+
+__builtin_cmdline
+                0x0040ef48      0x800
+ __builtin_cmdline
+                0x0040ef48      0x800 arch/powerpc/boot/wrapper.a(main.o)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.dynamic        0x0040f748        0x0
+                0x0040f748                        __dynamic_start = .
+ *(.dynamic)
+
+.hash
+ *(.hash)
+
+.interp
+ *(.interp)
+
+.rela.dyn       0x0040f748        0x0
+ *(.rela*)
+ .rela.iplt     0x0040f748        0x0 arch/powerpc/boot/of.o
+ .rela.got      0x0040f748        0x0 arch/powerpc/boot/of.o
+                0x0040f748                        . = ALIGN (0x8)
+
+.kernel:dtb     0x0040f748        0x0
+                0x0040f748                        _dtb_start = .
  *(.kernel:dtb)
-                0x00510738                        _dtb_end = .
-                0x00510738                        _vmlinux_start = .
+                0x0040f748                        _dtb_end = .
+                0x00410000                        . = ALIGN (0x1000)
+
+.kernel:vmlinux.strip
+                0x00410000   0x7b15d9
+                0x00410000                        _vmlinux_start = .
  *(.kernel:vmlinux.strip)
  .kernel:vmlinux.strip
-                0x00510738   0x7b159c ./zImage.5636.o
-                0x00cc1cd4                        _vmlinux_end = .
-                0x00cc1cd4                        _initrd_start = .
+                0x00410000   0x7b15d9 ./zImage.17153.o
+                0x00bc15d9                        _vmlinux_end = .
+
+.eh_frame       0x00bc15dc     0x1224
+ .eh_frame      0x00bc15dc       0x6c arch/powerpc/boot/of.o
+ .eh_frame      0x00bc1648       0x38 arch/powerpc/boot/epapr.o
+                                 0x4c (size before relaxing)
+ .eh_frame      0x00bc1680      0x164 arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
+                                0x178 (size before relaxing)
+ .eh_frame      0x00bc17e4       0x28 arch/powerpc/boot/wrapper.a(main.o)
+                                 0x3c (size before relaxing)
+ .eh_frame      0x00bc180c       0x54 arch/powerpc/boot/wrapper.a(ofconsole.o)
+                                 0x68 (size before relaxing)
+ .eh_frame      0x00bc1860      0x110 arch/powerpc/boot/wrapper.a(oflib.o)
+                                0x124 (size before relaxing)
+ .eh_frame      0x00bc1970       0x9c arch/powerpc/boot/wrapper.a(serial.o)
+                                 0xb0 (size before relaxing)
+ .eh_frame      0x00bc1a0c       0x7c arch/powerpc/boot/wrapper.a(simple_alloc.o)
+                                 0x90 (size before relaxing)
+ .eh_frame      0x00bc1a88       0xb8 arch/powerpc/boot/wrapper.a(stdio.o)
+                                 0xcc (size before relaxing)
+ .eh_frame      0x00bc1b40      0x188 arch/powerpc/boot/wrapper.a(decompress.o)
+                                0x19c (size before relaxing)
+ .eh_frame      0x00bc1cc8      0x1bc arch/powerpc/boot/wrapper.a(devtree.o)
+                                0x1d0 (size before relaxing)
+ .eh_frame      0x00bc1e84       0x28 arch/powerpc/boot/wrapper.a(elf_util.o)
+                                 0x3c (size before relaxing)
+ .eh_frame      0x00bc1eac      0x49c arch/powerpc/boot/wrapper.a(fdt_ro.o)
+                                0x4b0 (size before relaxing)
+ .eh_frame      0x00bc2348      0x210 arch/powerpc/boot/wrapper.a(fdt_rw.o)
+                                0x224 (size before relaxing)
+ .eh_frame      0x00bc2558       0x1c arch/powerpc/boot/wrapper.a(fdt_strerror.o)
+                                 0x30 (size before relaxing)
+ .eh_frame      0x00bc2574       0x98 arch/powerpc/boot/wrapper.a(fdt_wip.o)
+                                 0xac (size before relaxing)
+ .eh_frame      0x00bc260c       0x90 arch/powerpc/boot/wrapper.a(ns16550.o)
+                                 0xa4 (size before relaxing)
+ .eh_frame      0x00bc269c      0x164 arch/powerpc/boot/wrapper.a(fdt.o)
+                                0x178 (size before relaxing)
+
+.eh_frame       0x00bc2800        0x0
+ .eh_frame      0x00bc2800        0x0 arch/powerpc/boot/of.o
+                0x00bc3000                        . = ALIGN (0x1000)
+
+.kernel:initrd  0x00bc3000        0x0
+                0x00bc3000                        _initrd_start = .
  *(.kernel:initrd)
-                0x00cc1cd4                        _initrd_end = .
+                0x00bc3000                        _initrd_end = .
+                0x00bc3000                        . = ALIGN (0x1000)
 
-.branch_lt      0x00cc1cd4        0x0
- .branch_lt     0x00cc1cd4        0x0 arch/powerpc/boot/crt0.o
+.kernel:esm_blob
+                0x00bc3000        0x0
+                0x00bc3000                        _esm_blob_start = .
+ *(.kernel:esm_blob)
+                0x00bc3000                        _esm_blob_end = .
+                0x00bc3000                        . = ALIGN (0x1000)
 
-.got            0x00cc1cd4       0x10
- .got           0x00cc1cd4       0x10 arch/powerpc/boot/crt0.o
-                0x00cc1cd8                _GLOBAL_OFFSET_TABLE_
-                0x00cc2000                        . = ALIGN (0x1000)
-                0x00cc2000                        _edata = .
-                0x00cc2000                        __bss_start = .
-
-.bss            0x00cc2000     0x15d8
+.bss            0x00bc3000     0x15d8
+                0x00bc3000                        _edata = .
+                0x00bc3000                        __bss_start = .
  *(.sbss)
  *(.bss)
- .bss           0x00cc2000        0x4 arch/powerpc/boot/of.o
- .bss           0x00cc2004     0x100c arch/powerpc/boot/epapr.o
- .bss           0x00cc3010        0x8 arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
- .bss           0x00cc3018       0x70 arch/powerpc/boot/wrapper.a(main.o)
-                0x00cc3018                loader_info
-                0x00cc302c                console_ops
-                0x00cc3040                platform_ops
-                0x00cc3060                dt_ops
- .bss           0x00cc3088        0x4 arch/powerpc/boot/wrapper.a(ofconsole.o)
- .bss           0x00cc308c        0xc arch/powerpc/boot/wrapper.a(oflib.o)
- .bss           0x00cc3098       0x14 arch/powerpc/boot/wrapper.a(serial.o)
- .bss           0x00cc30ac       0x14 arch/powerpc/boot/wrapper.a(simple_alloc.o)
- .bss           0x00cc30c0      0x400 arch/powerpc/boot/wrapper.a(stdio.o)
- .bss           0x00cc34c0       0x10 arch/powerpc/boot/wrapper.a(decompress.o)
- .bss           0x00cc34d0      0x100 arch/powerpc/boot/wrapper.a(devtree.o)
- .bss           0x00cc35d0        0x8 arch/powerpc/boot/wrapper.a(ns16550.o)
-                0x00cc35d8                        _end = .
-
-.iplt           0x00cc35e0        0x0
- .iplt          0x00cc35e0        0x0 arch/powerpc/boot/crt0.o
-
-/DISCARD/
- *(.comment)
-Address of section .text set to 0x500000
-LOAD arch/powerpc/boot/crt0.o
+ .bss           0x00bc3000        0x4 arch/powerpc/boot/of.o
+ .bss           0x00bc3004     0x100c arch/powerpc/boot/epapr.o
+ .bss           0x00bc4010        0x8 arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
+ .bss           0x00bc4018       0x70 arch/powerpc/boot/wrapper.a(main.o)
+                0x00bc4018                loader_info
+                0x00bc402c                console_ops
+                0x00bc4040                platform_ops
+                0x00bc4060                dt_ops
+ .bss           0x00bc4088        0x4 arch/powerpc/boot/wrapper.a(ofconsole.o)
+ .bss           0x00bc408c        0xc arch/powerpc/boot/wrapper.a(oflib.o)
+ .bss           0x00bc4098       0x14 arch/powerpc/boot/wrapper.a(serial.o)
+ .bss           0x00bc40ac       0x14 arch/powerpc/boot/wrapper.a(simple_alloc.o)
+ .bss           0x00bc40c0      0x400 arch/powerpc/boot/wrapper.a(stdio.o)
+ .bss           0x00bc44c0       0x10 arch/powerpc/boot/wrapper.a(decompress.o)
+ .bss           0x00bc44d0      0x100 arch/powerpc/boot/wrapper.a(devtree.o)
+ .bss           0x00bc45d0        0x8 arch/powerpc/boot/wrapper.a(ns16550.o)
+ *(COMMON)
+                0x00bc45d8                        _end = .
+Address of section .text set to 0x400000
 LOAD arch/powerpc/boot/of.o
 LOAD arch/powerpc/boot/epapr.o
-LOAD ./zImage.5636.o
+LOAD ./zImage.17153.o
 LOAD arch/powerpc/boot/wrapper.a
-OUTPUT(arch/powerpc/boot/zImage.coff elf32-powerpc)
+OUTPUT(arch/powerpc/boot/zImage.chrp elf32-powerpc)
+
+.iplt           0x00bc45e0        0x0
+ .iplt          0x00bc45e0        0x0 arch/powerpc/boot/of.o
 
 .debug_loclists
                 0x00000000     0x668c
@@ -584,6 +617,28 @@ OUTPUT(arch/powerpc/boot/zImage.coff elf32-powerpc)
  .debug_addr    0x00000fec       0x58 arch/powerpc/boot/wrapper.a(ns16550.o)
  .debug_addr    0x00001044       0xe0 arch/powerpc/boot/wrapper.a(fdt.o)
 
+.comment        0x00000000       0x1e
+ .comment       0x00000000       0x1e arch/powerpc/boot/of.o
+                                 0x1f (size before relaxing)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/epapr.o
+ .comment       0x0000001e       0x1f ./zImage.17153.o
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(main.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(ofconsole.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(oflib.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(serial.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(simple_alloc.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(stdio.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(decompress.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(devtree.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(elf_util.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(fdt_ro.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(fdt_rw.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(fdt_strerror.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(fdt_wip.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(ns16550.o)
+ .comment       0x0000001e       0x1f arch/powerpc/boot/wrapper.a(fdt.o)
+
 .note.GNU-stack
                 0x00000000        0x0
  .note.GNU-stack
@@ -591,7 +646,7 @@ OUTPUT(arch/powerpc/boot/zImage.coff elf32-powerpc)
  .note.GNU-stack
                 0x00000000        0x0 arch/powerpc/boot/epapr.o
  .note.GNU-stack
-                0x00000000        0x0 ./zImage.5636.o
+                0x00000000        0x0 ./zImage.17153.o
  .note.GNU-stack
                 0x00000000        0x0 arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
  .note.GNU-stack
@@ -610,96 +665,104 @@ OUTPUT(arch/powerpc/boot/zImage.coff elf32-powerpc)
                 0x00000000        0x0 arch/powerpc/boot/wrapper.a(decompress.o)
  .note.GNU-stack
                 0x00000000        0x0 arch/powerpc/boot/wrapper.a(devtree.o)
- .note.GNU-stack
-                0x00000000        0x0 arch/powerpc/boot/wrapper.a(elf_util.o)
- .note.GNU-stack
-                0x00000000        0x0 arch/powerpc/boot/wrapper.a(fdt_ro.o)
- .note.GNU-stack
-                0x00000000        0x0 arch/powerpc/boot/wrapper.a(fdt_rw.o)
- .note.GNU-stack
-                0x00000000        0x0 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
- .note.GNU-stack
-                0x00000000        0x0 arch/powerpc/boot/wrapper.a(fdt_wip.o)
- .note.GNU-stack
-                0x00000000        0x0 arch/powerpc/boot/wrapper.a(ns16550.o)
- .note.GNU-stack
-                0x00000000        0x0 arch/powerpc/boot/wrapper.a(fdt.o)
-
-.debug_line     0x00000000     0x6a7e
- .debug_line    0x00000000      0x12c arch/powerpc/boot/of.o
- .debug_line    0x0000012c      0x186 arch/powerpc/boot/epapr.o
- .debug_line    0x000002b2      0x4b1 arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
- .debug_line    0x00000763      0x48b arch/powerpc/boot/wrapper.a(main.o)
- .debug_line    0x00000bee       0xb0 arch/powerpc/boot/wrapper.a(ofconsole.o)
- .debug_line    0x00000c9e      0x3af arch/powerpc/boot/wrapper.a(oflib.o)
- .debug_line    0x0000104d      0x27b arch/powerpc/boot/wrapper.a(serial.o)
- .debug_line    0x000012c8      0x325 arch/powerpc/boot/wrapper.a(simple_alloc.o)
- .debug_line    0x000015ed      0x611 arch/powerpc/boot/wrapper.a(stdio.o)
- .debug_line    0x00001bfe     0x19b6 arch/powerpc/boot/wrapper.a(decompress.o)
- .debug_line    0x000035b4      0x99b arch/powerpc/boot/wrapper.a(devtree.o)
- .debug_line    0x00003f4f      0x1f0 arch/powerpc/boot/wrapper.a(elf_util.o)
- .debug_line    0x0000413f     0x10c3 arch/powerpc/boot/wrapper.a(fdt_ro.o)
- .debug_line    0x00005202      0xd73 arch/powerpc/boot/wrapper.a(fdt_rw.o)
- .debug_line    0x00005f75       0x7a arch/powerpc/boot/wrapper.a(fdt_strerror.o)
- .debug_line    0x00005fef      0x250 arch/powerpc/boot/wrapper.a(fdt_wip.o)
- .debug_line    0x0000623f      0x1c8 arch/powerpc/boot/wrapper.a(ns16550.o)
- .debug_line    0x00006407      0x677 arch/powerpc/boot/wrapper.a(fdt.o)
-
-.debug_line_str
-                0x00000000      0x333
+ .note.GN               0x00000000      0x33c
  .debug_line_str
                 0x00000000       0x53 arch/powerpc/boot/of.o
  .debug_line_str
                 0x00000053       0x46 arch/powerpc/boot/epapr.o
                                  0x82 (size before relaxing)
  .debug_line_str
-                0x00000099       0x6e arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
-                                 0xd6 (size before relaxing)
+                0x00000099       0x77 arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
+                                 0xdf (size before relaxing)
  .debug_line_str
-                0x00000107       0x19 arch/powerpc/boot/wrapper.a(main.o)
-                                 0xb1 (size before relaxing)
+                0x00000110       0x19 arch/powerpc/boot/wrapper.a(main.o)
+                                 0xba (size before relaxing)
  .debug_line_str
-                0x00000120       0x1e arch/powerpc/boot/wrapper.a(ofconsole.o)
+                0x00000129       0x1e arch/powerpc/boot/wrapper.a(ofconsole.o)
                                  0x54 (size before relaxing)
  .debug_line_str
-                0x0000013e       0x23 arch/powerpc/boot/wrapper.a(oflib.o)
-                                 0xc2 (size before relaxing)
+                0x00000147       0x23 arch/powerpc/boot/wrapper.a(oflib.o)
+                                 0xcb (size before relaxing)
  .debug_line_str
-                0x00000161       0x1b arch/powerpc/boot/wrapper.a(serial.o)
-                                 0xad (size before relaxing)
+                0x0000016a       0x1b arch/powerpc/boot/wrapper.a(serial.o)
+                                 0xb6 (size before relaxing)
  .debug_line_str
-                0x0000017c       0x21 arch/powerpc/boot/wrapper.a(simple_alloc.o)
-                                 0x9d (size before relaxing)
+                0x00000185       0x21 arch/powerpc/boot/wrapper.a(simple_alloc.o)
+                                 0xa6 (size before relaxing)
  .debug_line_str
-                0x0000019d       0x1a arch/powerpc/boot/wrapper.a(stdio.o)
-                                 0x9c (size before relaxing)
+                0x000001a6       0x1a arch/powerpc/boot/wrapper.a(stdio.o)
+                                 0xa5 (size before relaxing)
  .debug_line_str
-                0x000001b7       0x8a arch/powerpc/boot/wrapper.a(decompress.o)
-                                0x126 (size before relaxing)
+                0x000001c0       0x8a arch/powerpc/boot/wrapper.a(decompress.o)
+                                0x12f (size before relaxing)
  .debug_line_str
-                0x00000241       0x1c arch/powerpc/boot/wrapper.a(devtree.o)
-                                 0xd3 (size before relaxing)
+                0x0000024a       0x1c arch/powerpc/boot/wrapper.a(devtree.o)
+                                 0xdc (size before relaxing)
  .debug_line_str
-                0x0000025d       0x1d arch/powerpc/boot/wrapper.a(elf_util.o)
+                0x00000266       0x1d arch/powerpc/boot/wrapper.a(elf_util.o)
                                  0x54 (size before relaxing)
  .debug_line_str
-                0x0000027a       0x2d arch/powerpc/boot/wrapper.a(fdt_ro.o)
-                                 0xd2 (size before relaxing)
+                0x00000283       0x2d arch/powerpc/boot/wrapper.a(fdt_ro.o)
+                                 0xdb (size before relaxing)
  .debug_line_str
-                0x000002a7       0x1b arch/powerpc/boot/wrapper.a(fdt_rw.o)
-                                 0xd2 (size before relaxing)
+                0x000002b0       0x1b arch/powerpc/boot/wrapper.a(fdt_rw.o)
+                                 0xdb (size before relaxing)
  .debug_line_str
-                0x000002c2       0x21 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
+                0x000002cb       0x21 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
                                  0x3e (size before relaxing)
  .debug_line_str
-                0x000002e3       0x1c arch/powerpc/boot/wrapper.a(fdt_wip.o)
-                                 0xc1 (size before relaxing)
+                0x000002ec       0x1c arch/powerpc/boot/wrapper.a(fdt_wip.o)
+                                 0xca (size before relaxing)
  .debug_line_str
-                0x000002ff       0x1c arch/powerpc/boot/wrapper.a(ns16550.o)
+                0x00000308       0x1c arch/powerpc/boot/wrapper.a(ns16550.o)
                                  0x68 (size before relaxing)
  .debug_line_str
-                0x0000031b       0x18 arch/powerpc/boot/wrapper.a(fdt.o)
-                                 0xcf (size before relaxing)
+                0x00000324       0x18 arch/powerpc/boot/wrapper.a(fdt.o)
+                                 0xd8 (size before relaxing)
+
+.debug_rnglists
+                0x00000000      0x6bd
+ .debug_rnglists
+                0x00000000       0x2a arch/powerpc/boot/wrapper.a(libfdt-wrapper.o)
+ .debug_rnglists
+                0x0000002a       0x6b arch/powerpc/boot/wrapper.a(main.o)
+ .debug_rnglists
+                0x00000095       0x1a arch/powerpc/boot/wrapper.a(serial.o)
+ .debug_rnglists
+                0x000000af       0x20 arch/powerpc/boot/wrapper.a(simple_alloc.o)
+ .debug_rnglists
+                0x000000cf       0x2a arch/powerpc/boot/wrapper.a(stdio.o)
+ .debug_rnglists
+                0x000000f9       0xbb arch/powerpc/boot/wrapper.a(decompress.o)
+ .debug_rnglists
+                0x000001b4      0x101 arch/powerpc/boot/wrapper.a(devtree.o)
+ .debug_rnglists
+                0x000002b5      0x18d arch/powerpc/boot/wrapper.a(fdt_ro.o)
+ .debug_rnglists
+                0x00000442      0x22e arch/powerpc/boot/wrapper.a(fdt_rw.o)
+ .debug_rnglists
+                0x00000670       0x4d arch/powerpc/boot/wrapper.a(fdt.o)
+e_str
+                0x00000266       0x1d arch/powerpc/boot/wrapper.a(elf_util.o)
+                                 0x54 (size before relaxing)
+ .debug_line_str
+                0x00000283       0x2d arch/powerpc/boot/wrapper.a(fdt_ro.o)
+                                 0xdb (size before relaxing)
+ .debug_line_str
+                0x000002b0       0x1b arch/powerpc/boot/wrapper.a(fdt_rw.o)
+                                 0xdb (size before relaxing)
+ .debug_line_str
+                0x000002cb       0x21 arch/powerpc/boot/wrapper.a(fdt_strerror.o)
+                                 0x3e (size before relaxing)
+ .debug_line_str
+                0x000002ec       0x1c arch/powerpc/boot/wrapper.a(fdt_wip.o)
+                                 0xca (size before relaxing)
+ .debug_line_str
+                0x00000308       0x1c arch/powerpc/boot/wrapper.a(ns16550.o)
+                                 0x68 (size before relaxing)
+ .debug_line_str
+                0x00000324       0x18 arch/powerpc/boot/wrapper.a(fdt.o)
+                                 0xd8 (size before relaxing)
 
 .debug_rnglists
                 0x00000000      0x6bd
